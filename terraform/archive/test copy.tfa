@@ -1,0 +1,38 @@
+  user_data = <<-EOF
+                 #!/bin/bash
+                 sudo apt update -y
+                 sudo mkdir /home/ubuntu/pythonwebapp
+                 sudo sed -i 's/#$nrconf{restart} = '"'"'i'"'"';/$nrconf{restart} = '"'"'a'"'"';/g' /etc/needrestart/needrestart.conf
+                 sudo apt  install awscli -y
+                 sudo chmod -R 777 /home
+                 sudo aws s3 cp s3://yusufswebsite/pythonwebapp /home/ubuntu/pythonwebapp --recursive
+                 sudo cd /home/ubuntu/pythonwebapp
+                 sudo apt-get install python3-venv -y
+                 sudo python3 -m venv /home/ubuntu/pythonwebapp/venv
+                 source /home/ubuntu/pythonwebapp/venv/bin/activate
+                 pip install -r /home/ubuntu/pythonwebapp/requirements.txt
+
+                 sudo echo "[Unit]
+                 Description=Gunicorn instance for a simple hello world app
+                 After=network.target
+                 [Service]
+                 User=ubuntu
+                 Group=www-data
+                 WorkingDirectory=/home/ubuntu/pythonwebapp
+                 ExecStart=/home/ubuntu/pythonwebapp/venv/bin/gunicorn -b localhost:8000 app:app
+                 Restart=always
+                 [Install]
+                 WantedBy=multi-user.target" >> /etc/systemd/system/pythonwebapp.service
+
+                 sudo systemctl daemon-reload
+                 sudo systemctl start pythonwebapp
+                 sudo systemctl enable pythonwebapp
+
+                 sudo apt install nginx -y
+                 sudo systemctl start nginx
+                 sudo systemctl enable nginx
+                 sudo aws s3 cp  s3://yusufswebsite/default /etc/nginx/sites-available/
+                 sudo systemctl restart nginx
+
+                 EOF
+                 

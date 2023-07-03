@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> {{website_name}}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <style>
+    #banner {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  {% include 'nav.html' %}
+  <img class="img-fluid" id="banner" src="{{ url_for('static',filename='yusufbanner.jpg')}}">
+  <div class="container">
+
+
+
+
+
+    <div class="row" style="margin-bottom:16px">
+      <div class="col-md-6">
+        <h2 class="text-center mt-2 mb-4">
+          About This Website
+        </h2>
+
+        <ul>
+          <li>This project is a demonstration of my expertise in <strong>cloud computing</strong> and
+            <strong>infrastructure management</strong> using <strong>Terraform</strong> and <strong>Amazon Web Services
+              (AWS)</strong>.
+          </li>
+          <li>The project features a <strong>Python Flask web application</strong> that I developed and deployed in the
+            cloud, emphasizing my practical experience in
+            <strong>deploying infrastructure for applications in the cloud</strong>.
+          </li>
+          <li>I showcase my ability to configure, manage, and utilize key AWS services such as <strong>Virtual Private
+              Cloud (VPC)</strong>, <strong>Security Groups</strong>, <strong>Subnets</strong>, <strong>Internet
+              Gateways</strong>, <strong>S3 (Simple Storage Service)</strong>, <strong>IAM (Identity and Access
+              Management) Roles</strong>, and <strong>Route Tables</strong>.</li>
+          <li>This work takes advantage of <strong>Infrastructure as Code (IaC)</strong>, an approach that
+            is becoming increasingly important in the modern DevOps environment, particularly through the use of
+            <strong>Terraform</strong>.
+          </li>
+          <li>I demonstrated my skills in <strong>automating</strong> and <strong>provisioning</strong> cloud resources
+            in a <strong>repeatable</strong> and <strong>reliable</strong> manner using <strong>Terraform</strong>.</li>
+        </ul>
+
+        <ul>
+          <li> See Github for this application's <strong>Terrafrom</strong> and <strong>Python Flask
+              Application</strong>
+            files:
+
+          </li>
+          <li><strong><a href="https://www.example.com" style="color: black;" target=" _blank">Visit
+                Example.com</a></strong></li>
+
+        </ul>
+        <ul>
+          <li>Contact Email: <strong><a href="mailto:example@example.com"
+                style="color: black;">yusufsagir0@gmail.com</a></strong>
+
+
+          </li>
+          <li> Click the <strong>Linkedin </strong> icon on the right.
+
+
+          </li>
+
+        </ul>
+
+
+
+
+      </div>
+      <a class="d-none d-md-block col-md-6" href="https://www.linkedin.com/in/yusuf-sagir/">
+        <img class="img-fluid" src="{{ url_for('static',filename='linkedin.png')}}"
+          style="height:500px;border-radius:1px;">
+      </a>
+    </div>
+  </div>
+
+  {% include 'footer.html' %}
+</body>
+
+</html>
